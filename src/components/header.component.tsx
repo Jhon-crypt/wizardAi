@@ -24,6 +24,7 @@ import { GiWizardFace } from "react-icons/gi";
 import { BiLogInCircle } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi"
 import { MdNotes } from "react-icons/md";
+import { Outlet, Link } from "react-router-dom"
 
 
 function Header() {
@@ -73,27 +74,37 @@ function Header() {
 
                         <List spacing={3} fontSize='2xl'>
                             <ListItem>
-                                <ListIcon as={BiLogInCircle} />
-                                Login
+                                <Link to="Login">
+                                    <ListIcon as={BiLogInCircle} />
+                                    Login
+                                </Link>
                             </ListItem>
                             <ListItem>
-                                <ListIcon as={BiUserCircle} />
-                                Sign up
+                                <Link to="Login">
+                                    <ListIcon as={BiUserCircle} />
+                                    Sign up
+                                </Link>
                             </ListItem>
                             <ListItem>
-                                <ListIcon as={MdNotes} />
-                                About
+                                <Link to="Login">
+                                    <ListIcon as={MdNotes} />
+                                    About
+                                </Link>
                             </ListItem>
                             {/* You can also use custom icons from react-icons */}
                             <ListItem>
-                                <ListIcon as={BiLogInCircle} />
-                                Terms
+                                <Link to="Login">
+                                    <ListIcon as={BiLogInCircle} />
+                                    Terms
+                                </Link>
                             </ListItem>
                         </List>
 
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
+
+            <Outlet />
 
         </>
     );
