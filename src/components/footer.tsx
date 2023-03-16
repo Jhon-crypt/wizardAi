@@ -4,6 +4,8 @@ import {
     BreadcrumbLink,
     Center
 } from '@chakra-ui/react'
+import { Icon } from '@chakra-ui/icons';
+import { BsTwitter,BsFacebook } from "react-icons/bs";
 
 function Footer() {
 
@@ -11,9 +13,9 @@ function Footer() {
 
         <>
             <Center>
-                <Breadcrumb separator='-' color="white">
+                <Breadcrumb separator='|' color="white">
                     <BreadcrumbItem>
-                        <BreadcrumbLink href='#'>Home</BreadcrumbLink>
+                        <BreadcrumbLink href='#'><Icon as={BsTwitter}></Icon></BreadcrumbLink>
                     </BreadcrumbItem>
 
                     <BreadcrumbItem>
@@ -21,7 +23,7 @@ function Footer() {
                     </BreadcrumbItem>
 
                     <BreadcrumbItem >
-                        <BreadcrumbLink href='#'>Contact</BreadcrumbLink>
+                        <BreadcrumbLink href='#'><Icon as={BsFacebook}></Icon></BreadcrumbLink>
                     </BreadcrumbItem>
                 </Breadcrumb>
             </Center>
