@@ -1,5 +1,6 @@
 import Header from "../components/header.component"
 import Login from "../components/login.component"
+import Footer from "../components/footer.component"
 
 function LoginPage() {
 
@@ -16,6 +17,8 @@ function LoginPage() {
             />
 
             <Login />
+
+            <Footer />
 
         </>
 
