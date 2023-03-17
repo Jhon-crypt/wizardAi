@@ -10,7 +10,12 @@ function HomePage() {
 
         <>
 
-            <Header />
+            <Header 
+                login_color="white"
+                signup_color="white"
+                about_color="white"
+                terms_color="white"
+            />
 
             <Home />
 

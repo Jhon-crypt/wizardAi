@@ -27,7 +27,12 @@ import { MdNotes } from "react-icons/md";
 import { Outlet, Link } from "react-router-dom"
 
 
-function Header() {
+function Header(props : {
+    login_color : string,
+    signup_color : string,
+    about_color : string,
+    terms_color : string
+}) {
 
     const { isOpen, onOpen, onClose }: any = useDisclosure()
     const btnRef: any = React.useRef()
@@ -73,26 +78,26 @@ function Header() {
                     <DrawerBody>
 
                         <List spacing={3} fontSize='2xl'>
-                            <ListItem>
+                            <ListItem color={props.login_color}>
                                 <Link to="Login">
                                     <ListIcon as={BiLogInCircle} />
                                     Login
                                 </Link>
                             </ListItem>
-                            <ListItem>
+                            <ListItem  color={props.signup_color}>
                                 <Link to="Login">
                                     <ListIcon as={BiUserCircle} />
                                     Sign up
                                 </Link>
                             </ListItem>
-                            <ListItem>
+                            <ListItem color={props.about_color}>
                                 <Link to="Login">
                                     <ListIcon as={MdNotes} />
                                     About
                                 </Link>
                             </ListItem>
                             {/* You can also use custom icons from react-icons */}
-                            <ListItem>
+                            <ListItem color={props.terms_color}>
                                 <Link to="Login">
                                     <ListIcon as={BiLogInCircle} />
                                     Terms
