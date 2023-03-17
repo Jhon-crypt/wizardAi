@@ -85,20 +85,20 @@ function Header(props : {
                                 </Link>
                             </ListItem>
                             <ListItem  color={props.signup_color}>
-                                <Link to="Login">
+                                <Link to="Signup">
                                     <ListIcon as={BiUserCircle} />
                                     Sign up
                                 </Link>
                             </ListItem>
                             <ListItem color={props.about_color}>
-                                <Link to="Login">
+                                <Link to="About">
                                     <ListIcon as={MdNotes} />
                                     About
                                 </Link>
                             </ListItem>
                             {/* You can also use custom icons from react-icons */}
                             <ListItem color={props.terms_color}>
-                                <Link to="Login">
+                                <Link to="Terms">
                                     <ListIcon as={BiLogInCircle} />
                                     Terms
                                 </Link>
