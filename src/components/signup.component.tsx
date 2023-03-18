@@ -8,7 +8,7 @@ import {
     Button
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons';
-import { BiLogInCircle } from "react-icons/bi";
+import { BiUserCircle } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
 import { EmailIcon } from '@chakra-ui/icons';
 import { LockIcon } from '@chakra-ui/icons'
@@ -23,7 +23,7 @@ function Signup() {
 
                 <Center>
                     <Heading as="h1" size="3xl" mb={5}>
-                        <Icon as={BiLogInCircle} /> Signup
+                        <Icon as={BiUserCircle} /> Signup
                     </Heading>
                 </Center>
 
@@ -46,7 +46,7 @@ function Signup() {
                         <Input type='password' />
                     </FormControl>
 
-                    <Button type="submit" w='100%' leftIcon={<Icon as={BiLogInCircle} />} bg='#5279F4'>
+                    <Button type="submit" w='100%' leftIcon={<Icon as={BiUserCircle} />} bg='#5279F4'>
                         Signup
                     </Button>
 
