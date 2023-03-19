@@ -41,7 +41,7 @@ function Login() {
                         <Input type='password' />
                     </FormControl>
 
-                    <Button type="submit" w='100%' leftIcon={<Icon as={BiLogInCircle} />} bg='#5279F4'>
+                    <Button type="submit" w='100%' leftIcon={<Icon as={BiLogInCircle} />} bg='#5279F4' borderRadius={45}>
                          Login
                     </Button>
 

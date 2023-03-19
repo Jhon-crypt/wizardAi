@@ -5,7 +5,9 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Button
+    Button,
+    Alert,
+    AlertIcon
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons';
 import { BiUserCircle } from "react-icons/bi";
@@ -31,8 +33,13 @@ function Signup() {
 
                 <form>
 
+                    <Alert status='success' mb={3} color="black" as="b" borderRadius={45}>
+                        <AlertIcon />
+                        Data uploaded to the server. Fire on!
+                    </Alert>
+
                     <FormControl mb={5}>
-                        <FormLabel><Icon as={BiUser}  /> Fullname</FormLabel>
+                        <FormLabel><Icon as={BiUser} /> Fullname</FormLabel>
                         <Input type='text' />
                     </FormControl>
 
@@ -46,7 +53,7 @@ function Signup() {
                         <Input type='password' />
                     </FormControl>
 
-                    <Button type="submit" w='100%' leftIcon={<Icon as={BiUserCircle} />} bg='#5279F4'>
+                    <Button type="submit" w='100%' leftIcon={<Icon as={BiUserCircle} />} bg='#5279F4' borderRadius={45}>
                         Signup
                     </Button>
 
