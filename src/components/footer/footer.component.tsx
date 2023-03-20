@@ -12,6 +12,7 @@ function Footer() {
     return (
 
         <>
+            <br /><br /><br /><br /><br />
             <Center>
                 <Breadcrumb separator='|' color="white">
                     <BreadcrumbItem>
@@ -28,7 +29,7 @@ function Footer() {
                 </Breadcrumb>
             </Center>
 
-            <br /><br />
+            <br />
 
         </>
 

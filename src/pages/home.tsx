@@ -1,7 +1,7 @@
-import Home from "../components/home.component"
-import Features from "../components/features.component"
-import Section from "../components/section.component"
-import Footer from "../components/footer.component"
+import Home from "../components/home/home.component"
+import Features from "../components/features/features.component"
+import Section from "../components/section/section.component"
+import Footer from "../components/footer/footer.component"
 
 function HomePage() {
 

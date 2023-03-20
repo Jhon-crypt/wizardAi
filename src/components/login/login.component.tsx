@@ -33,12 +33,12 @@ function Login() {
 
                     <FormControl mb={5}>
                         <FormLabel><EmailIcon /> Email address</FormLabel>
-                        <Input type='email' />
+                        <Input type='email' required/>
                     </FormControl>
 
                     <FormControl mb={5}>
                         <FormLabel><LockIcon /> Password</FormLabel>
-                        <Input type='password' />
+                        <Input type='password' required/>
                     </FormControl>
 
                     <Button type="submit" w='100%' leftIcon={<Icon as={BiLogInCircle} />} bg='#5279F4' borderRadius={45}>
