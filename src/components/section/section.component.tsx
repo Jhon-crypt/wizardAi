@@ -34,7 +34,12 @@ function Section() {
                             <Text fontSize='xl' maxW='32rem'>
                                 Sign up to Join the AI revolution, the future of intelligence and supercharge your productivity and creativity!
                             </Text>
-                            <Button size='lg' bg='#5179F3' mt='24px' borderRadius='45px'>
+                            <Button size='lg' bg='#5179F3' mt='24px' borderRadius='45px' border='1px' borderColor='#5279F4'
+                            _hover={{
+                                borderColor: '#5279F4',
+                                backgroundColor: '#000000',
+                                color: '#5279F4'
+                            }}>
                                 Sign up now
                             </Button>
                         </Box>

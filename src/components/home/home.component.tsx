@@ -29,7 +29,12 @@ function Home() {
                             <Text fontSize='xl' maxW='32rem'>
                                 Empowering students, educators, teachers and curious minds in finding answers to all research, reports and assignments.
                             </Text>
-                            <Button size='lg' bg='#5179F3' mt='24px' borderRadius='45px'>
+                            <Button size='lg' bg='#5179F3' mt='24px' borderRadius='45px' border='1px' borderColor='#5279F4'
+                            _hover={{
+                                borderColor: '#5279F4',
+                                backgroundColor: '#000000',
+                                color: '#5279F4'
+                            }}>
                                 Create a free account
                             </Button>
                         </Box>
