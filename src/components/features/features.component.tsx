@@ -9,9 +9,9 @@ import {
     SimpleGrid,
     Box
 } from '@chakra-ui/react'
-import hero from '../assets/wizard1.jpg'
-import wizard2 from '../assets/wizard2~2.jpg'
-import wizard3 from '../assets/wizard3.jpg'
+import hero from '../../assets/wizard1.jpg'
+import wizard2 from '../../assets/wizard2~2.jpg'
+import wizard3 from '../../assets/wizard3.jpg'
 
 function Features() {
 

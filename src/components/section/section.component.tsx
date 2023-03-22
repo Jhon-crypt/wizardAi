@@ -8,7 +8,7 @@ import {
     Image,
     Button
 } from '@chakra-ui/react'
-import sectionimg from '../assets/hero3.jpg'
+import sectionimg from '../../assets/hero3.jpg'
 
 function Section() {
 

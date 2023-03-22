@@ -7,6 +7,7 @@ import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import Header2 from './components/header/header2.component';
+import WizardPage from './pages/wizard';
 
 function Main() {
 
@@ -21,7 +22,7 @@ function Main() {
                 terms_color="white"
             />}>
             <Route index element={<HomePage />} />
-            <Route path="Signup" element={<SignupPage />} />
+            
             <Route path="Login" element={<LoginPage />} />
           </Route>
           <Route path="App" element={ <Header2
@@ -30,6 +31,7 @@ function Main() {
                 about_color="white"
                 terms_color="white"
             />}>
+            <Route index element={<WizardPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

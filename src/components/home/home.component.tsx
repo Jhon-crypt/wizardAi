@@ -8,7 +8,7 @@ import {
     Image,
     Button
 } from '@chakra-ui/react'
-import hero from '../assets/wizard-hero.webp'
+import hero from '../../assets/wizard-hero.webp'
 
 function Home() {
 
