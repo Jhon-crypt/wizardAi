@@ -22,7 +22,7 @@ function Main() {
                 terms_color="white"
             />}>
             <Route index element={<HomePage />} />
-            
+            <Route path="Signup" element={<SignupPage />} />
             <Route path="Login" element={<LoginPage />} />
           </Route>
           <Route path="App" element={ <Header2

@@ -68,7 +68,12 @@ function Signup() {
                         <Input type='password' required/>
                     </FormControl>
 
-                    <Button type="submit" w='100%' leftIcon={<Icon as={BiUserCircle} />} bg='#5279F4' borderRadius={45}>
+                    <Button type="submit" w='100%' leftIcon={<Icon as={BiUserCircle} />} bg='#5279F4' borderRadius={45} border='1px' borderColor='#5279F4'
+                    _hover={{
+                        borderColor: '#5279F4',
+                        backgroundColor: '#000000',
+                        color: '#5279F4'
+                    }}>
                         Signup
                     </Button>
 
