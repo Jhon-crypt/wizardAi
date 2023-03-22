@@ -19,7 +19,7 @@ function Wizard() {
 
         <>
 
-            <Container color='white' mt={2} pt={2} id="wizard_form">
+            <Container color='white' mt={10} pt={10} id="wizard_form">
 
                 <form>
 
