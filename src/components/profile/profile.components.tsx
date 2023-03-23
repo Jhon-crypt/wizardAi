@@ -6,10 +6,11 @@ import {
     VStack,
     Text,
     Divider,
-    HStack
+    HStack,
+    Button
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
-import { BiUserPin, BiUserCircle } from "react-icons/bi";
+import { BiUserPin, BiUserCircle, BiCog, BiLogOutCircle } from "react-icons/bi";
 
 
 function Profile() {
@@ -43,7 +44,7 @@ function Profile() {
                         <Center>
 
                             <VStack
-                                spacing={4}
+                                spacing={1}
                                 align='stretch'
                             >
 
@@ -61,7 +62,7 @@ function Profile() {
 
                                     <Center>
 
-                                        <Heading as='h3'>
+                                        <Heading as='h3' noOfLines={1}>
                                             Oladele John
                                         </Heading>
 
@@ -69,13 +70,11 @@ function Profile() {
 
                                 </Box>
 
-                                <Divider />
-
                                 <Box>
 
                                     <Center>
 
-                                        <Text fontSize='3xl'>
+                                        <Text fontSize='3xl' noOfLines={1}>
                                             <small>johnoladele690@gmail.com</small>
                                         </Text>
 
@@ -95,23 +94,44 @@ function Profile() {
 
                             <HStack spacing='24px'>
 
-                                <Box p={2} w='40px' h='40px' bg='yellow.200'>
+                                <Box p={2} bg='#191919'>
 
-                                    <Center>1</Center>
-                                    
+                                    <Center>
+
+                                        <Button leftIcon={<Icon as={BiCog} />} bg='#5279F4' borderRadius={45} border='1px' borderColor='#5279F4'
+                                            _hover={{
+                                                borderColor: '#5279F4',
+                                                backgroundColor: '#191919',
+                                                color: '#5279F4'
+                                            }}>
+
+                                            Settings
+
+                                        </Button>
+
+                                    </Center>
+
                                 </Box>
 
-                                <Box p={2} w='40px' h='40px' bg='tomato'>
+                                <Box p={2} bg='#191919'>
 
-                                    <Center>1</Center>
+                                    <Center>
+
+                                        <Button leftIcon={<Icon as={BiLogOutCircle} />} bg='red' borderRadius={45} border='1px' borderColor='red'
+                                        _hover={{
+                                            borderColor: 'red',
+                                            backgroundColor: '#191919',
+                                            color: 'red'
+                                        }}>
+
+                                            Logout
+
+                                        </Button>
+
+                                    </Center>
 
                                 </Box>
 
-                                <Box p={2} w='40px' h='40px' bg='pink.100'>
-
-                                    <Center>1</Center>
-                                    
-                                </Box>
 
                             </HStack>
 
