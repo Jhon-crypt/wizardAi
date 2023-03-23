@@ -8,6 +8,7 @@ import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import Header2 from './components/header/header2.component';
 import WizardPage from './pages/wizard';
+import ProfilePage from './pages/profile';
 
 function Main() {
 
@@ -32,6 +33,7 @@ function Main() {
                 terms_color="white"
             />}>
             <Route index element={<WizardPage />} />
+            <Route path="Profile" element={<ProfilePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
