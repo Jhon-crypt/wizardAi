@@ -5,10 +5,11 @@ import {
     Heading,
     VStack,
     Text,
-    Divider
+    Divider,
+    HStack
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
-import { BiUserPin, BiUserCircle} from "react-icons/bi";
+import { BiUserPin, BiUserCircle } from "react-icons/bi";
 
 
 function Profile() {
@@ -17,7 +18,7 @@ function Profile() {
 
         <>
 
-            <Container color='white' mt={10} pt={10} >
+            <Container color='white' mt={10} pt={10} mb={10}>
 
                 <VStack
                     spacing={4}
@@ -75,7 +76,7 @@ function Profile() {
                                     <Center>
 
                                         <Text fontSize='3xl'>
-                                            johnoladele690@gmail.com
+                                            <small>johnoladele690@gmail.com</small>
                                         </Text>
 
                                     </Center>
@@ -88,8 +89,34 @@ function Profile() {
 
                     </Box>
 
-                    <Box h='40px' bg='pink.100'>
-                        3
+                    <Box p={4} bg='#191919' borderRadius={10}>
+
+                        <Center>
+
+                            <HStack spacing='24px'>
+
+                                <Box p={2} w='40px' h='40px' bg='yellow.200'>
+
+                                    <Center>1</Center>
+                                    
+                                </Box>
+
+                                <Box p={2} w='40px' h='40px' bg='tomato'>
+
+                                    <Center>1</Center>
+
+                                </Box>
+
+                                <Box p={2} w='40px' h='40px' bg='pink.100'>
+
+                                    <Center>1</Center>
+                                    
+                                </Box>
+
+                            </HStack>
+
+                        </Center>
+
                     </Box>
                 </VStack>
 
