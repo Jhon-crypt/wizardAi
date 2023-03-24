@@ -71,7 +71,7 @@ function Header(props: {
                     <DrawerCloseButton />
                     <DrawerHeader color='#5279F4'>
 
-                        Oladele John
+                        <Link to="Profile">Oladele John</Link>
 
                     </DrawerHeader>
 

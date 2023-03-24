@@ -74,7 +74,7 @@ function Profile() {
 
                                     <Center>
 
-                                        <Text fontSize='3xl' noOfLines={1}>
+                                        <Text fontSize='3xl' noOfLines={1} overflowWrap='break-word'>
                                             <small>johnoladele690@gmail.com</small>
                                         </Text>
 
