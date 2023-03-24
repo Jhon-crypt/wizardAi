@@ -12,6 +12,7 @@ import {
     Stack,
     Text,
 } from '@chakra-ui/react'
+import { ArrowUpIcon } from '@chakra-ui/icons'
 
 function Wizard() {
 
@@ -237,6 +238,7 @@ function Wizard() {
 
                 </Box>
 
+                <a href="#wizard_form">
                 <Button border='1px' borderColor='#5279F4' mb={3} bg='#5279F4' pos="fixed" bottom="20px" right="10px" borderRadius={45} 
                 _hover={{ 
                     borderColor:'#5279F4',
@@ -244,10 +246,10 @@ function Wizard() {
                     color:'#5279F4'
                 }}
                 >
-                    <a href="#wizard_form">
-                    Back To Top
-                    </a>
+                    
+                        <ArrowUpIcon />
                 </Button>
+                </a>
 
             </Container>
 
