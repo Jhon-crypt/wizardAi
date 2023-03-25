@@ -14,7 +14,12 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton
+    ModalCloseButton,
+    Accordion,
+    AccordionItem,
+    AccordionPanel,
+    AccordionButton,
+    AccordionIcon
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
 import { BiUserPin, BiUserCircle, BiCog, BiLogOutCircle } from "react-icons/bi";
@@ -154,19 +159,78 @@ function Profile() {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent bg='#191919' color='white'>
-                    <ModalHeader> <Icon as={BiCog}/> Settings</ModalHeader>
+
+                    <ModalHeader> <Icon as={BiCog} /> Settings</ModalHeader>
+
                     <ModalCloseButton />
+
                     <ModalBody>
-                        
+
+                        <Accordion allowToggle>
+                            
+                            <AccordionItem>
+                                <h2>
+                                    <AccordionButton>
+                                        <Box as="span" flex='1' textAlign='left'>
+                                            Update account
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4}>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                    commodo consequat.
+                                </AccordionPanel>
+                            </AccordionItem>
+
+                            <AccordionItem>
+                                <h2>
+                                    <AccordionButton>
+                                        <Box as="span" flex='1' textAlign='left'>
+                                            Account security
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4}>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                    commodo consequat.
+                                </AccordionPanel>
+                            </AccordionItem>
+
+
+                            <AccordionItem>
+                                <h2>
+                                    <AccordionButton>
+                                        <Box as="span" flex='1' textAlign='left'>
+                                            Delete account
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4}>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                    commodo consequat.
+                                </AccordionPanel>
+                            </AccordionItem>
+
+                        </Accordion>
+
                     </ModalBody>
 
                     <ModalFooter>
                         <Button bg='#5279F4' mr={3} onClick={onClose} borderRadius={45} border='1px' borderColor='#5279F4'
-                        _hover={{
-                            borderColor: '#5279F4',
-                            backgroundColor: '#191919',
-                           color: '#5279F4'
-                        }}>
+                            _hover={{
+                                borderColor: '#5279F4',
+                                backgroundColor: '#191919',
+                                color: '#5279F4'
+                            }}>
                             Close
                         </Button>
                     </ModalFooter>
