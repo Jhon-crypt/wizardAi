@@ -35,7 +35,7 @@ function Signup() {
 
     const [signupStatus, setSignupStatus] = useState(false)
 
-    const signUpData = async (event: any) => {
+    const handleSignup = async (event: any) => {
 
         setLoading(true)
 
@@ -97,7 +97,7 @@ function Signup() {
 
                 <br />
 
-                <form onSubmit={signUpData}>
+                <form onSubmit={handleSignup}>
 
                     <Center>
                         {error ?
@@ -160,7 +160,8 @@ function Signup() {
 
                     <FormControl mb={5}>
                         <FormLabel><LockIcon /> Password</FormLabel>
-                        <Input type='password' required value={Password} onChange={(event) => setPassword(event.target.value)} />
+                        <Input type='password' required value={Password} onChange={(event) => setPassword(event.target.value)} 
+                        minLength={6}/>
                     </FormControl>
 
                     {loading ?
