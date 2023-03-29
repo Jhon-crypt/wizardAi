@@ -134,7 +134,7 @@ function Signup() {
                                     <Box>
                                         <AlertDescription>
                                             Account created, check your mail, then continue 
-                                            by loggin in <a href="http://localhost:5173/Login" color="blue"><Button colorScheme='blue' size='xs'>here</Button></a>
+                                            by loggin in <a href="http://localhost:5173/Login" color="blue"><Button bg='#5279F4' size='xs' borderRadius={45}>here</Button></a>
                                         </AlertDescription>
                                     </Box>
                                 </Alert>
