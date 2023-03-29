@@ -4,13 +4,13 @@ import {
     Center,
     Button,
     Textarea,
-    Box,
     Card,
     CardHeader,
     Heading,
     CardBody,
-    Stack,
     Text,
+    Box,
+    Stack
 } from '@chakra-ui/react'
 import { ArrowUpIcon } from '@chakra-ui/icons'
 
@@ -29,36 +29,23 @@ function Wizard() {
                     </FormControl>
 
                     <Center>
-                        <Button mb={5} type="submit" w='100%' bg='#5279F4' borderRadius={45} border='1px' borderColor='#5279F4' 
-                        _hover={{ 
-                            borderColor:'#5279F4',
-                            backgroundColor:'#000000',
-                            color:'#5279F4'
-                        }}
+                        <Button mb={5} type="submit" w='100%' bg='#5279F4' borderRadius={45} border='1px' borderColor='#5279F4'
+                            _hover={{
+                                borderColor: '#5279F4',
+                                backgroundColor: '#000000',
+                                color: '#5279F4'
+                            }}
                         >
                             Run the magic
                         </Button>
                     </Center>
 
                 </form>
+            </Container>
 
-                <Box p={4} bg="#191919" borderRadius={10}>
+            <Container maxW='container.sm' >
 
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
+                <Box p={4} bg="#191919" borderRadius={10} mt={3}>
 
                     <Card bg="#000000" color="white" mb={4}>
                         <CardHeader>
@@ -76,149 +63,9 @@ function Wizard() {
                         </CardBody>
                     </Card>
 
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
+                </Box>
 
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
-                        </CardHeader>
-
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
+                <Box p={4} bg="#191919" borderRadius={10} mt={3}>
 
                     <Card bg="#000000" color="white" mb={4}>
                         <CardHeader>
@@ -239,16 +86,16 @@ function Wizard() {
                 </Box>
 
                 <a href="#wizard_form">
-                <Button border='1px' borderColor='#5279F4' mb={3} bg='#5279F4' pos="fixed" bottom="20px" right="10px" borderRadius={45} 
-                _hover={{ 
-                    borderColor:'#5279F4',
-                    backgroundColor:'#000000',
-                    color:'#5279F4'
-                }}
-                >
-                    
+                    <Button border='1px' borderColor='#5279F4' mb={3} bg='#5279F4' pos="fixed" bottom="20px" right="10px" borderRadius={45}
+                        _hover={{
+                            borderColor: '#5279F4',
+                            backgroundColor: '#000000',
+                            color: '#5279F4'
+                        }}
+                    >
+
                         <ArrowUpIcon />
-                </Button>
+                    </Button>
                 </a>
 
             </Container>
