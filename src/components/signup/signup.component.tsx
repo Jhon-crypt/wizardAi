@@ -107,7 +107,7 @@ function Signup() {
 
 
                                 <Alert status='error' mb={3} color="black" as="b" borderRadius={45} w={300}>
-                                    <AlertIcon />
+                                     <AlertIcon />
                                     <Box>
                                         <AlertDescription>
                                             <Center>
