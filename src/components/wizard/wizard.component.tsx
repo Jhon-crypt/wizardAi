@@ -15,7 +15,7 @@ import {
 import { ArrowUpIcon } from '@chakra-ui/icons'
 import openai from '../../openai/openai'
 import supabase from '../../supabase/supabase'
-import { useState } from 'react'
+import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal } from 'react'
 
 
 function Wizard() {
@@ -23,6 +23,88 @@ function Wizard() {
     const [Query, setQuery] = useState('')
 
     const [loading, setLoading] = useState(false)
+
+    const [result, setResult]: any = useState([])
+
+    useEffect(() => {
+
+        const fetchResearch = async () => {
+
+            try {
+
+                const { data }: any = await supabase.auth.getUser()
+
+                if (data) {
+
+                    try {
+
+                        let { data: research, error }: any = await supabase
+                            .from('Research')
+                            .select("*")
+                            .eq('user_id', `${data.user.id}`)
+                            .order('id', { ascending: false })
+
+                        setLoading(false)
+
+                        if (research) {
+
+                            setResult(research)
+
+                            console.log(research)
+
+                        } else {
+
+                            console.log(error)
+
+                        }
+
+
+                    } catch (error) {
+
+                        console.log(error)
+
+                    }
+
+
+                }
+
+
+            } catch (error) {
+
+                console.log(error)
+
+            }
+
+        }
+
+        fetchResearch()
+
+
+    }, [])
+
+    useEffect(() => {
+
+        const researchListener = supabase
+            .channel('any')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'Research' }, payload => {
+                const newResearch = payload.new;
+                setResult((oldResearch: any) => {
+                    const newResearches = [...oldResearch, newResearch];
+                    newResearches.sort((a, b) => b.id - a.id);
+                    return newResearches;
+                });
+            })
+            .subscribe()
+
+        return () => {
+
+            supabase.removeChannel(researchListener)
+
+        };
+
+    }, [])
+
+
 
     const handleResearch = async (event: any) => {
 
@@ -74,15 +156,15 @@ function Wizard() {
                             try {
 
                                 const { error } = await
-                                supabase.from('History').insert({
-                                    question: `${Query}`
-                                })
+                                    supabase.from('History').insert({
+                                        question: `${Query}`
+                                    })
 
-                                if(error){
+                                if (error) {
 
                                     console.log(error)
 
-                                }else{
+                                } else {
 
                                     console.log("Inserted into history")
 
@@ -173,18 +255,20 @@ function Wizard() {
 
             <Container maxW='container.sm' >
 
-                <Box p={4} bg="#191919" borderRadius={10} mt={3}>
+                {result.map((item: { id: Key | null | undefined; question: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; result: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined }) => (
+
+                <Box p={4} bg="#191919" borderRadius={10} mt={3} key={item.id}>
 
                     <Card bg="#000000" color="white" mb={4}>
                         <CardHeader>
-                            <Heading size='lg'>Topic</Heading>
+                            <Heading size='lg'>{item.question}</Heading>
                         </CardHeader>
 
                         <CardBody>
                             <Stack spacing='4'>
                                 <Box>
                                     <Text pt='2' fontSize='lg'>
-                                        View a summary of all your clients over the last month.
+                                        {item.result}
                                     </Text>
                                 </Box>
                             </Stack>
@@ -192,6 +276,8 @@ function Wizard() {
                     </Card>
 
                 </Box>
+
+                ))}
 
                 <a href="#wizard_form">
                     <Button border='1px' borderColor='#5279F4' mb={3} bg='#5279F4' pos="fixed" bottom="20px" right="10px" borderRadius={45}
