@@ -102,76 +102,7 @@ function Header(props: {
                                     </Link>
                                 </ListItem>
                                 <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
-
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
+                            
                             </List>
 
                         </Box>

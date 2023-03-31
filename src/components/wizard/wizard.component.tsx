@@ -50,7 +50,7 @@ function Wizard() {
 
                             setResult(research)
 
-                            console.log(research)
+                            //console.log(research)
 
                         } else {
 
@@ -126,7 +126,7 @@ function Wizard() {
 
             } else {
 
-                console.log(completion.data.choices[0].message.content);
+                //console.log(completion.data.choices[0].message.content);
 
                 //fetching user id from supabase
                 try {
@@ -157,7 +157,8 @@ function Wizard() {
 
                                 const { error } = await
                                     supabase.from('History').insert({
-                                        question: `${Query}`
+                                        question: `${Query}`,
+                                        user_id : `${data.user.id}`
                                     })
 
                                 if (error) {

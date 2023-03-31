@@ -25,7 +25,7 @@ function WizardPage(){
 
                     setLoginStatus(true)
 
-                    console.log(data)
+                    //console.log(data)
 
                 }
 
