@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react'
 import { ArrowUpIcon } from '@chakra-ui/icons'
 
+
 function Wizard() {
 
     return (

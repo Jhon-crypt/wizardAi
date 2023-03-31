@@ -8,10 +8,8 @@ import {
     Button,
     Alert,
     AlertIcon,
-    CloseButton,
     Box,
     AlertDescription,
-    useDisclosure
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons';
 import { BiUserCircle } from "react-icons/bi";
