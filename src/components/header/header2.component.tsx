@@ -179,11 +179,7 @@ function Header(props: {
 
                                         {/* You can also use custom icons from react-icons */}
                                         <ListItem color={props.terms_color} key={item.id}>
-                                            <Link to="Terms">
-
-                                                {item.question}
-
-                                            </Link>
+                                            {item.question}
                                         </ListItem>
                                         <Divider />
 
