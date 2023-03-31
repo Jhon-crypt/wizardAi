@@ -23,6 +23,8 @@ import { RepeatClockIcon } from '@chakra-ui/icons';
 import { Icon } from '@chakra-ui/icons';
 import { GiWizardFace } from "react-icons/gi";
 import { Outlet, Link } from "react-router-dom"
+import supabase from '../../supabase/supabase'
+import { useState, useEffect } from "react"
 
 
 function Header(props: {
@@ -33,7 +35,86 @@ function Header(props: {
 }) {
 
     const { isOpen, onOpen, onClose }: any = useDisclosure()
+
     const btnRef: any = React.useRef()
+
+    const [history, setHistory]: any = useState([])
+
+    useEffect(() => {
+
+        const fetchHistory = async () => {
+
+            try {
+
+                const { data }: any = await supabase.auth.getUser()
+
+                if (data) {
+
+                    try {
+
+                        let { data: history, error }: any = await supabase
+                            .from('History')
+                            .select("*")
+                            .eq('user_id', `${data.user.id}`)
+                            .order('id', { ascending: false })
+
+                        if (history) {
+
+                            setHistory(history)
+
+                            //console.log(History)
+
+                        } else {
+
+                            console.log(error)
+
+                        }
+
+
+                    } catch (error) {
+
+                        console.log(error)
+
+                    }
+
+
+                }
+
+
+            } catch (error) {
+
+                console.log(error)
+
+            }
+
+        }
+
+        fetchHistory()
+
+
+    }, [])
+
+    useEffect(() => {
+
+        const historyListener = supabase
+            .channel('history')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'History' }, payload => {
+                const newHistory = payload.new;
+                setHistory((oldHistory: any) => {
+                    const newHistories = [...oldHistory, newHistory];
+                    newHistories.sort((a, b) => b.id - a.id);
+                    return newHistories;
+                });
+            })
+            .subscribe()
+
+        return () => {
+
+            supabase.removeChannel(historyListener)
+
+        };
+
+    }, [])
 
 
     return (
@@ -79,8 +160,6 @@ function Header(props: {
 
                     <DrawerBody>
 
-                        
-
                         <List spacing={3} fontSize='xl' mb={3}>
                             <ListItem color={props.login_color}>
                                 <Link to="Login">
@@ -93,16 +172,25 @@ function Header(props: {
                         <Box maxW='sm' borderWidth='1px' borderRadius='lg' pt={3} pb={3} pl={3} pr={3} bg="#000000">
 
                             <List spacing={3} fontSize='lg'>
-                                
-                                {/* You can also use custom icons from react-icons */}
-                                <ListItem color={props.terms_color}>
-                                    <Link to="Terms">
 
-                                        Termsnjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjd djkdjdjdjdjdjdjdjdjdjdjdjdjd
-                                    </Link>
-                                </ListItem>
-                                <Divider />
-                            
+                                {history.map((item: { id: React.Key | null | undefined; question: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
+
+                                    <>
+
+                                        {/* You can also use custom icons from react-icons */}
+                                        <ListItem color={props.terms_color} key={item.id}>
+                                            <Link to="Terms">
+
+                                                {item.question}
+
+                                            </Link>
+                                        </ListItem>
+                                        <Divider />
+
+                                    </>
+
+                                ))}
+
                             </List>
 
                         </Box>
