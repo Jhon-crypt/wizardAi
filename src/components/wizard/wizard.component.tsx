@@ -13,9 +13,30 @@ import {
     Stack
 } from '@chakra-ui/react'
 import { ArrowUpIcon } from '@chakra-ui/icons'
+import openai from '../../openai/openai'
 
 
 function Wizard() {
+
+    const handleResearch = async () => {
+
+        try {
+
+            const completion : any = await openai.createChatCompletion({
+                model: "gpt-3.5-turbo",
+                messages: [{role: "user", content: "What is a fusion reactor"}],
+            });
+            console.log(completion.data.choices[0].message.content);
+
+        } catch(error){
+
+            console.log(error)
+
+        }
+
+    }
+
+    handleResearch()
 
     return (
 
@@ -23,7 +44,7 @@ function Wizard() {
 
             <Container color='white' mt={10} pt={10} id="wizard_form">
 
-                <form>
+                <form >
 
                     <FormControl mb={5}>
                         <Textarea placeholder='E.g Write a research of 100 words on sentence structure and technical writing' required />
