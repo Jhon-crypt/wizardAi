@@ -22,7 +22,7 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import { RepeatClockIcon } from '@chakra-ui/icons';
 import { Icon } from '@chakra-ui/icons';
 import { GiWizardFace } from "react-icons/gi";
-import { Outlet, Link } from "react-router-dom"
+import { Outlet,Link } from "react-router-dom"
 import supabase from '../../supabase/supabase'
 import { useState, useEffect } from "react"
 
@@ -34,11 +34,12 @@ function Header(props: {
     terms_color: string
 }) {
 
+    const [history, setHistory]: any = useState([])
+
     const { isOpen, onOpen, onClose }: any = useDisclosure()
 
     const btnRef: any = React.useRef()
 
-    const [history, setHistory]: any = useState([])
 
     useEffect(() => {
 
@@ -119,6 +120,7 @@ function Header(props: {
 
     return (
         <>
+
             <Box bg="#191919" mr={4} ml={4} mt={3} borderRadius='45px' boxShadow='2xl'>
                 <Container maxW='container.lg'>
                     <Menu>
