@@ -3,16 +3,19 @@ import {
     FormControl,
     Center,
     Button,
+    ButtonGroup,
     Textarea,
     Card,
     CardHeader,
     Heading,
     CardBody,
+    CardFooter,
     Text,
     Box,
-    Stack
+    Stack,
+    CircularProgress
 } from '@chakra-ui/react'
-import { ArrowUpIcon } from '@chakra-ui/icons'
+import { ArrowUpIcon, DeleteIcon } from '@chakra-ui/icons'
 import openai from '../../openai/openai'
 import supabase from '../../supabase/supabase'
 import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal } from 'react'
@@ -21,6 +24,8 @@ import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactFra
 function Wizard() {
 
     const [Query, setQuery] = useState('')
+
+    const [loadingResearch, setLoadingResearch] = useState(false)
 
     const [loading, setLoading] = useState(false)
 
@@ -38,13 +43,15 @@ function Wizard() {
 
                     try {
 
+                        setLoadingResearch(true)
+
                         let { data: research, error }: any = await supabase
                             .from('Research')
                             .select("*")
                             .eq('user_id', `${data.user.id}`)
                             .order('id', { ascending: false })
 
-                        setLoading(false)
+                        setLoadingResearch(false)
 
                         if (research) {
 
@@ -158,7 +165,7 @@ function Wizard() {
                                 const { error } = await
                                     supabase.from('History').insert({
                                         question: `${Query}`,
-                                        user_id : `${data.user.id}`
+                                        user_id: `${data.user.id}`
                                     })
 
                                 if (error) {
@@ -254,44 +261,85 @@ function Wizard() {
                 </form>
             </Container>
 
+
             <Container maxW='container.sm' >
 
-                {result.map((item: { id: Key | null | undefined; question: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; result: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined }) => (
+                <>
 
-                <Box p={4} bg="#191919" borderRadius={10} mt={3} key={item.id}>
+                    {loadingResearch ?
 
-                    <Card bg="#000000" color="white" mb={4}>
-                        <CardHeader>
-                            <Heading size='lg'>{item.question}</Heading>
-                        </CardHeader>
+                        (
 
-                        <CardBody>
-                            <Stack spacing='4'>
-                                <Box>
-                                    <Text pt='2' fontSize='lg'>
-                                        {item.result}
-                                    </Text>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-                    </Card>
+                            <Center>
+                                <CircularProgress isIndeterminate color='#5279F4' mt={3} />
+                            </Center>
 
-                </Box>
+                        ) : (
 
-                ))}
+                            <>
 
-                <a href="#wizard_form">
-                    <Button border='1px' borderColor='#5279F4' mb={3} bg='#5279F4' pos="fixed" bottom="20px" right="10px" borderRadius={45}
-                        _hover={{
-                            borderColor: '#5279F4',
-                            backgroundColor: '#000000',
-                            color: '#5279F4'
-                        }}
-                    >
+                                {result.map((item: { id: Key | null | undefined; question: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; result: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined }) => (
 
-                        <ArrowUpIcon />
-                    </Button>
-                </a>
+                                    <Box p={4} bg="#191919" borderRadius={10} mt={3} key={item.id}>
+
+                                        <Card bg="#000000" color="white" mb={4}>
+                                            <CardHeader>
+                                                <Heading size='lg'>{item.question}</Heading>
+                                            </CardHeader>
+
+                                            <CardBody>
+                                                <Stack spacing='4'>
+                                                    <Box>
+                                                        <Text pt='2' fontSize='lg'>
+                                                            {item.result}
+                                                        </Text>
+                                                    </Box>
+                                                </Stack>
+                                            </CardBody>
+
+                                            <CardFooter>
+                                                <ButtonGroup spacing='2'>
+                                                    <Button leftIcon={<DeleteIcon />} bg='red' borderRadius={45} border='1px' borderColor='red'
+                                                        _hover={{
+                                                            borderColor: 'red',
+                                                            backgroundColor: '#191919',
+                                                            color: 'red'
+                                                        }}>
+
+                                                        Delete
+
+                                                    </Button>
+                                                </ButtonGroup>
+                                            </CardFooter>
+
+                                        </Card>
+
+                                    </Box>
+
+                                ))}
+
+                            </>
+
+                        )
+
+                    }
+
+
+
+                    <a href="#wizard_form">
+                        <Button border='1px' borderColor='#5279F4' mb={3} bg='#5279F4' pos="fixed" bottom="20px" right="10px" borderRadius={45}
+                            _hover={{
+                                borderColor: '#5279F4',
+                                backgroundColor: '#000000',
+                                color: '#5279F4'
+                            }}
+                        >
+
+                            <ArrowUpIcon />
+                        </Button>
+                    </a>
+
+                </>
 
             </Container>
 
