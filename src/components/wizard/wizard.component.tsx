@@ -19,6 +19,7 @@ import { ArrowUpIcon, DeleteIcon } from '@chakra-ui/icons'
 import openai from '../../openai/openai'
 import supabase from '../../supabase/supabase'
 import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 function Wizard() {
@@ -30,6 +31,8 @@ function Wizard() {
     const [loading, setLoading] = useState(false)
 
     const [result, setResult]: any = useState([])
+
+    let navigate = useNavigate()
 
     useEffect(() => {
 
@@ -110,8 +113,6 @@ function Wizard() {
         };
 
     }, [])
-
-
 
     const handleResearch = async (event: any) => {
 
@@ -210,6 +211,39 @@ function Wizard() {
 
     }
 
+
+    const handleDelete = (researchId: any) => async () => {
+
+        try {
+
+            //setLoadingResearch(true)
+
+            const { error } = await supabase
+                .from('Research')
+                .delete()
+                .eq('id', `${researchId}`)
+
+            //setLoadingResearch(true)
+
+            if (error) {
+
+                console.log(error)
+
+            } else {
+
+                navigate("/App/Redirect")
+
+            }
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
+
+
+    }
+
     return (
 
         <>
@@ -304,7 +338,7 @@ function Wizard() {
                                                             borderColor: 'red',
                                                             backgroundColor: '#191919',
                                                             color: 'red'
-                                                        }}>
+                                                        }} onClick={handleDelete(`${item.id}`)}>
 
                                                         Delete
 

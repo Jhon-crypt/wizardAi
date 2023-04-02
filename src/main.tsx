@@ -9,6 +9,7 @@ import SignupPage from './pages/signup';
 import Header2 from './components/header/header2.component';
 import WizardPage from './pages/wizard';
 import ProfilePage from './pages/profile';
+import Redirect from './components/redirect/redirect';
 
 function Main() {
 
@@ -34,6 +35,7 @@ function Main() {
             />}>
             <Route index element={<WizardPage />} />
             <Route path="Profile" element={<ProfilePage />} />
+            <Route path="Redirect" element={<Redirect />} />
           </Route>
         </Routes>
       </BrowserRouter>
