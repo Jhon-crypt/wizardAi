@@ -7,7 +7,7 @@ function Redirect(){
 
     useEffect(() => {
 
-        navigate("../../App")
+        navigate("/App")
       
     }, [navigate])
 

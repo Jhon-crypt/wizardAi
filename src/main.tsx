@@ -35,7 +35,9 @@ function Main() {
             />}>
             <Route index element={<WizardPage />} />
             <Route path="Profile" element={<ProfilePage />} />
-            <Route path="Redirect" element={<Redirect />} />
+          </Route>
+          <Route path="Redirect" element={<Redirect />}>
+            
           </Route>
         </Routes>
       </BrowserRouter>

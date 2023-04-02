@@ -16,16 +16,19 @@ import {
     Divider,
     List,
     ListItem,
-    ListIcon
+    ListIcon,
+    Button,
+    VStack
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { RepeatClockIcon } from '@chakra-ui/icons';
 import { Icon } from '@chakra-ui/icons';
 import { GiWizardFace } from "react-icons/gi";
-import { Outlet,Link } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 import supabase from '../../supabase/supabase'
 import { useState, useEffect } from "react"
-
+import { DeleteIcon } from '@chakra-ui/icons'
+import { useNavigate } from 'react-router-dom';
 
 function Header(props: {
     login_color: string,
@@ -37,6 +40,8 @@ function Header(props: {
     const [history, setHistory]: any = useState([])
 
     const { isOpen, onOpen, onClose }: any = useDisclosure()
+
+    let navigate = useNavigate()
 
     const btnRef: any = React.useRef()
 
@@ -99,7 +104,7 @@ function Header(props: {
 
         const historyListener = supabase
             .channel('history')
-            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'History' }, payload => {
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'History' }, payload => {
                 const newHistory = payload.new;
                 setHistory((oldHistory: any) => {
                     const newHistories = [...oldHistory, newHistory];
@@ -117,11 +122,44 @@ function Header(props: {
 
     }, [])
 
+    const handleDelete = (historyId: any) => async () => {
+
+        try {
+
+            //setLoadingResearch(true)
+
+            const { error } = await supabase
+                .from('History')
+                .delete()
+                .eq('id', `${historyId}`)
+
+            //setLoadingResearch(true)
+
+            if (error) {
+
+                console.log(error)
+
+            } else {
+
+                navigate("/Redirect")
+
+            }
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
+
+
+    }
+
 
     return (
         <>
 
             <Box bg="#191919" mr={4} ml={4} mt={3} borderRadius='45px' boxShadow='2xl'>
+
                 <Container maxW='container.lg'>
                     <Menu>
                         <Flex pl={3} pr={3} pt={2} pb={2}>
@@ -140,6 +178,7 @@ function Header(props: {
 
                     </Menu>
                 </Container>
+
             </Box>
 
             <Drawer
@@ -181,7 +220,29 @@ function Header(props: {
 
                                         {/* You can also use custom icons from react-icons */}
                                         <ListItem color={props.terms_color} key={item.id}>
-                                            {item.question}
+                                            <VStack
+                                                spacing={4}
+                                                align='stretch'
+                                            >
+                                                <Box>
+                                                    {item.question}
+                                                </Box>
+
+                                                <Box>
+                                                    <Button leftIcon={<DeleteIcon />} bg='black' color='red' borderRadius={45} border='1px' borderColor='red'
+                                                    size='xs'
+                                                    _hover={{
+                                                        borderColor: 'red',
+                                                        backgroundColor: 'red',
+                                                        color: 'white'
+                                                    }} onClick={handleDelete(`${item.id}`)} >
+
+                                                        Delete
+
+                                                    </Button>
+                                                </Box>
+
+                                            </VStack>
                                         </ListItem>
                                         <Divider />
 

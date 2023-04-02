@@ -231,7 +231,7 @@ function Wizard() {
 
             } else {
 
-                navigate("/App/Redirect")
+                navigate("/Redirect")
 
             }
 
