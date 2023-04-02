@@ -22,16 +22,61 @@ import {
     AccordionIcon,
     FormControl,
     FormLabel,
-    Input
+    Input,
+    CircularProgress
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
 import { BiUserPin, BiUserCircle, BiCog, BiLogOutCircle } from "react-icons/bi";
 import { EmailIcon } from '@chakra-ui/icons';
-
+import { useState, useEffect } from 'react'
+import supabase from '../../supabase/supabase'
 
 function Profile() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const [loading, setLoading] = useState(false)
+
+    const [username, setUsername] = useState("")
+
+    const [email, setEmail] = useState("")
+
+    useEffect(() => {
+
+        const fetchUserProfile = async () => {
+
+            try {
+
+                setLoading(true)
+
+                const { data }: any = await supabase.auth.getUser()
+
+                setLoading(false)
+
+                if (data) {
+
+                    setUsername(data.user.user_metadata.full_name)
+
+                    setEmail(data.user.email)
+
+                } else {
+
+                    console.log("No user found")
+
+                }
+
+            } catch (error) {
+
+                console.log(error)
+
+            }
+
+        }
+
+        fetchUserProfile()
+
+    }, [])
+
 
     return (
 
@@ -39,124 +84,144 @@ function Profile() {
 
             <Container color='white' mt={10} pt={10} mb={10}>
 
-                <VStack
-                    spacing={4}
-                    align='stretch'
-                >
-                    <Box>
+                <>
 
-                        <Center>
+                    {loading ?
 
-                            <Heading as='h1' fontSize='5xl' >
+                        (
 
-                                <Icon as={BiUserCircle} /> Profile
+                            <Center>
+                                <CircularProgress isIndeterminate color='#5279F4' mt={3} />
+                            </Center>
 
-                            </Heading>
-
-                        </Center>
-
-                    </Box>
-
-                    <Box p={4} bg='#191919' borderRadius={10}>
-
-                        <Center>
+                        ) : (
 
                             <VStack
-                                spacing={1}
+                                spacing={4}
                                 align='stretch'
                             >
-
                                 <Box>
 
                                     <Center>
 
-                                        <Icon as={BiUserPin} fontSize='100px' />
+                                        <Heading as='h1' fontSize='5xl' >
 
-                                    </Center>
+                                            <Icon as={BiUserCircle} /> Profile
 
-                                </Box>
-
-                                <Box>
-
-                                    <Center>
-
-                                        <Heading as='h3' noOfLines={1}>
-                                            Oladele John
                                         </Heading>
 
                                     </Center>
 
                                 </Box>
 
-                                <Box>
+                                <Box p={4} bg='#191919' borderRadius={10}>
 
                                     <Center>
 
-                                        <Text fontSize='3xl' noOfLines={1} overflowWrap='break-word'>
-                                            <small>johnoladele690@gmail.com</small>
-                                        </Text>
+                                        <VStack
+                                            spacing={1}
+                                            align='stretch'
+                                        >
+
+                                            <Box>
+
+                                                <Center>
+
+                                                    <Icon as={BiUserPin} fontSize='100px' />
+
+                                                </Center>
+
+                                            </Box>
+
+                                            <Box>
+
+                                                <Center>
+
+                                                    <Heading as='h3' noOfLines={1}>
+                                                        {username}
+                                                    </Heading>
+
+                                                </Center>
+
+                                            </Box>
+
+                                            <Box>
+
+                                                <Center>
+
+                                                    <Text fontSize='3xl' noOfLines={1} overflowWrap='break-word'>
+                                                        <small>{email}</small>
+                                                    </Text>
+
+                                                </Center>
+
+                                            </Box>
+
+                                        </VStack>
 
                                     </Center>
 
                                 </Box>
 
+                                <Box p={4} bg='#191919' borderRadius={10}>
+
+                                    <Center>
+
+                                        <HStack spacing='24px'>
+
+                                            <Box p={2} bg='#191919'>
+
+                                                <Center>
+
+                                                    <Button leftIcon={<Icon as={BiCog} />} bg='#5279F4' borderRadius={45} border='1px' borderColor='#5279F4'
+                                                        _hover={{
+                                                            borderColor: '#5279F4',
+                                                            backgroundColor: '#191919',
+                                                            color: '#5279F4'
+                                                        }} onClick={onOpen}>
+
+                                                        Settings
+
+                                                    </Button>
+
+                                                </Center>
+
+                                            </Box>
+
+                                            <Box p={2} bg='#191919'>
+
+                                                <Center>
+
+                                                    <Button leftIcon={<Icon as={BiLogOutCircle} />} bg='red' borderRadius={45} border='1px' borderColor='red'
+                                                        _hover={{
+                                                            borderColor: 'red',
+                                                            backgroundColor: '#191919',
+                                                            color: 'red'
+                                                        }}>
+
+                                                        Logout
+
+                                                    </Button>
+
+                                                </Center>
+
+                                            </Box>
+
+
+                                        </HStack>
+
+                                    </Center>
+
+                                </Box>
                             </VStack>
 
-                        </Center>
+                        )
 
-                    </Box>
-
-                    <Box p={4} bg='#191919' borderRadius={10}>
-
-                        <Center>
-
-                            <HStack spacing='24px'>
-
-                                <Box p={2} bg='#191919'>
-
-                                    <Center>
-
-                                        <Button leftIcon={<Icon as={BiCog} />} bg='#5279F4' borderRadius={45} border='1px' borderColor='#5279F4'
-                                            _hover={{
-                                                borderColor: '#5279F4',
-                                                backgroundColor: '#191919',
-                                                color: '#5279F4'
-                                            }} onClick={onOpen}>
-
-                                            Settings
-
-                                        </Button>
-
-                                    </Center>
-
-                                </Box>
-
-                                <Box p={2} bg='#191919'>
-
-                                    <Center>
-
-                                        <Button leftIcon={<Icon as={BiLogOutCircle} />} bg='red' borderRadius={45} border='1px' borderColor='red'
-                                            _hover={{
-                                                borderColor: 'red',
-                                                backgroundColor: '#191919',
-                                                color: 'red'
-                                            }}>
-
-                                            Logout
-
-                                        </Button>
-
-                                    </Center>
-
-                                </Box>
+                    }
 
 
-                            </HStack>
 
-                        </Center>
-
-                    </Box>
-                </VStack>
+                </>
 
             </Container>
 

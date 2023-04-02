@@ -40,13 +40,13 @@ function Wizard() {
 
             try {
 
+                setLoadingResearch(true)
+
                 const { data }: any = await supabase.auth.getUser()
 
                 if (data) {
 
                     try {
-
-                        setLoadingResearch(true)
 
                         let { data: research, error }: any = await supabase
                             .from('Research')

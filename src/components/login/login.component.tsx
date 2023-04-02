@@ -61,7 +61,6 @@ function Login() {
 
                 navigate("/App")
 
-
             }
 
         } catch (error) {
