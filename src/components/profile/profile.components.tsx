@@ -20,18 +20,21 @@ import {
     AccordionPanel,
     AccordionButton,
     AccordionIcon,
-    FormControl,
-    FormLabel,
-    Input,
-    CircularProgress
+    CircularProgress,
+    Alert,
+    AlertDescription,
+    AlertIcon
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
 import { BiUserPin, BiUserCircle, BiCog, BiLogOutCircle } from "react-icons/bi";
 import { EmailIcon } from '@chakra-ui/icons';
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import supabase from '../../supabase/supabase'
 
 function Profile() {
+
+    let navigate = useNavigate()
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -76,6 +79,34 @@ function Profile() {
         fetchUserProfile()
 
     }, [])
+
+    async function handleLogout() {
+
+        try {
+
+            setLoading(true)
+
+            const { error } = await supabase.auth.signOut()
+
+            if (error) {
+
+                console.log(error)
+
+            } else {
+
+                setLoading(false)
+
+                navigate("/Login")
+
+            }
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
+
+    }
 
 
     return (
@@ -197,7 +228,7 @@ function Profile() {
                                                             borderColor: 'red',
                                                             backgroundColor: '#191919',
                                                             color: 'red'
-                                                        }}>
+                                                        }} onClick={handleLogout}>
 
                                                         Logout
 
@@ -248,10 +279,16 @@ function Profile() {
                                 </h2>
                                 <AccordionPanel pb={4}>
 
-                                    <FormControl mb={5}>
-                                        <FormLabel><EmailIcon /> Update email address</FormLabel>
-                                        <Input type='email' required />
-                                    </FormControl>
+                                    <Alert status='error' mb={3} color="black" as="b" borderRadius={45} w={300}>
+                                        <AlertIcon />
+                                        <Box>
+                                            <AlertDescription>
+                                                <Center>
+                                                    Still working on it
+                                                </Center>
+                                            </AlertDescription>
+                                        </Box>
+                                    </Alert>
 
                                 </AccordionPanel>
                             </AccordionItem>
@@ -267,6 +304,17 @@ function Profile() {
                                 </h2>
                                 <AccordionPanel pb={4}>
 
+                                    <Alert status='error' mb={3} color="black" as="b" borderRadius={45} w={300}>
+                                        <AlertIcon />
+                                        <Box>
+                                            <AlertDescription>
+                                                <Center>
+                                                    Still working on it
+                                                </Center>
+                                            </AlertDescription>
+                                        </Box>
+                                    </Alert>
+
                                 </AccordionPanel>
                             </AccordionItem>
 
@@ -281,6 +329,17 @@ function Profile() {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
+
+                                    <Alert status='error' mb={3} color="black" as="b" borderRadius={45} w={300}>
+                                        <AlertIcon />
+                                        <Box>
+                                            <AlertDescription>
+                                                <Center>
+                                                    Still working on it
+                                                </Center>
+                                            </AlertDescription>
+                                        </Box>
+                                    </Alert>
 
                                 </AccordionPanel>
                             </AccordionItem>
