@@ -18,6 +18,7 @@ import { EmailIcon } from '@chakra-ui/icons';
 import { LockIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import supabase from '../../supabase/supabase';
+import { Outlet,Link } from "react-router-dom"
 
 function Signup() {
 
@@ -132,7 +133,7 @@ function Signup() {
                                     <Box>
                                         <AlertDescription>
                                             Account created, check your mail, then continue 
-                                            by loggin in <a href="http://localhost:5173/Login" color="blue"><Button bg='#5279F4' size='xs' borderRadius={45}>here</Button></a>
+                                            by loggin in <Link to="Login"><Button bg='#5279F4' size='xs' borderRadius={45} color="blue">here</Button></Link>
                                         </AlertDescription>
                                     </Box>
                                 </Alert>
@@ -198,6 +199,8 @@ function Signup() {
             </Container>
 
             <br /> <br />
+
+            <Outlet />
 
         </>
 
