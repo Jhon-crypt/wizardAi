@@ -193,7 +193,7 @@ function Header(props: {
                     <DrawerCloseButton />
                     <DrawerHeader color='#5279F4'>
 
-                        <Link to="Profile" onClick={onClose}>Oladele John</Link>
+                        <Link to="Profile" onClick={onClose}>Profile</Link>
 
                     </DrawerHeader>
 

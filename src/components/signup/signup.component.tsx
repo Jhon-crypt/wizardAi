@@ -133,7 +133,7 @@ function Signup() {
                                     <Box>
                                         <AlertDescription>
                                             Account created, check your mail, then continue 
-                                            by loggin in <Link to="Login"><Button bg='#5279F4' size='xs' borderRadius={45} color="blue">here</Button></Link>
+                                            by loggin in <Link to="../Login"><Button bg='#5279F4' size='xs' borderRadius={45} color="blue">here</Button></Link>
                                         </AlertDescription>
                                     </Box>
                                 </Alert>
