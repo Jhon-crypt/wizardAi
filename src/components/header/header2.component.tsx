@@ -104,7 +104,7 @@ function Header(props: {
 
         const historyListener = supabase
             .channel('history')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'History' }, payload => {
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'History' }, payload => {
                 const newHistory = payload.new;
                 setHistory((oldHistory: any) => {
                     const newHistories = [...oldHistory, newHistory];
